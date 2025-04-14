@@ -1,0 +1,87 @@
+<!-- Row start -->
+<div class="row gx-3">
+	<!-- iniciuo quadro nome e data -->		  
+    <div class="col-md-6">
+        <div class="card mb-3">                 
+            <div class="card-body">
+			
+                    <!-- Row start -->
+                    <div class="col-lg-3 col-sm-4 col-12">
+						<!-- Form group start (NomCli) -->
+						<div class="card mb-3">                        
+							<div class="was-validated">
+								<label for="validationCustom04" class="form-label">Cliente</label>
+								<select class="form-select" id="single-select-field" data-placeholder="Escolha...">
+									<option selected="" disabled="" value=""></option>
+										<?php
+										$cmd = "SELECT * FROM `e085cli` WHERE 1 ORDER BY 'NomCli'";
+										$rs=mysqli_query($conecta,$cmd);								
+										while($row=mysqli_fetch_array($rs,MYSQLI_ASSOC)){
+										echo "<option value=".$row['CgcCpf'].">".$row['NomCli']." - ".$row['CidCli']." - ".$row['SigUfs']." - CNPJ/CPF:".$row['CgcCpf']."</option>";
+										}
+										?>
+								</select>
+							</div>                       
+						</div>
+						<!-- Form group end -->                         
+					</div>
+			
+			
+			
+					<div class="col-lg-3 col-sm-4 col-12">                
+						<!-- Form group start (DatEmi) -->
+						<div class="card mb-3">
+							<label for="dueDate" class="form-label">Data da emissão</label>
+								<div class="input-group">
+									<input name="DatEmi" type="text" class="form-control datepicker-opens-left" id="dueDate" placeholder="DD/MM/YYYY" />
+									<span class="input-group-text"><i class="icon-calendar"></i></span>
+								</div>
+						</div>
+						<!-- Form group end -->
+					</div>  
+
+
+					<div class="col-lg-3 col-sm-4 col-12">                
+						<!-- Form group start (DatEmi) -->
+						<div class="card mb-3">
+							<label for="dueDate" class="form-label">Data de previsão</label>
+								<div class="input-group">
+									<input name="DatPre" type="text" class="form-control datepicker-opens-left" id="dueDate" placeholder="DD/MM/YYYY" />
+									<span class="input-group-text"><i class="icon-calendar"></i></span>
+								</div>
+						</div>
+						<!-- Form group end -->
+					</div>
+					
+                    <!-- Row end -->
+            
+			</div>
+		</div>
+	</div>
+	<!-- fim quadro nome e data -->		  
+	<!-- inicio quadro mensagem -->		  
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body">
+			
+                    <!-- Row start -->
+                    <div class="row gx-3">
+						<div class="col-xxl-12">
+							<div class="col-sm-6 col-12">                
+								<!-- Form group start -->
+								<div class="card mb-2">
+									<label for="msgCustomer" class="form-label">Messagem</label>
+										<textarea rows="3" id="msgCustomer" class="form-control"></textarea>
+								</div>
+								<!-- Form group end -->
+							</div>
+						</div>
+					</div>
+                    <!-- Row end -->
+            
+			</div>
+		</div>
+    </div>
+	<!-- fim quadro mensagem -->
+</div>
+<!-- Row end -->
