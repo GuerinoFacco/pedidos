@@ -138,6 +138,7 @@ include "config.php";
                     <!--Pedido novo -->
                     <form action="gravaropedido.php" method="POST">
                       <h3>Dados gerais do pedido</h3>
+                      
                       <label for="customer_name">Nome do Cliente:</label><br>
                         <input type="text" id="customer_name" name="customer_name" required><br><br>
 
