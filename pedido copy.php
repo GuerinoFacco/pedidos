@@ -118,8 +118,7 @@ include "config.php";
                                     
                                    
                                   </div>
-                                  
-                                            <!-- Row end -->
+                                  <!-- Row end -->
                                     
                               </div>
                             </div>

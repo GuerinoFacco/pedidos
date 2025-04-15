@@ -25,6 +25,19 @@ include "config.php";
     <!-- Date Range CSS -->
     <link rel="stylesheet" href="assets/vendor/daterange/daterange.css" />
     <link rel="stylesheet" href="assets/dist/css/select2.min.css">
+    <!-- script pedido novo -->
+    <script>
+        function addItemRow() {
+            const table = document.getElementById('items-table');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" name="item_description[]" required></td>
+                <td><input type="number" name="item_quantity[]" step="1" min="1" required></td>
+                <td><input type="number" name="item_unit_price[]" step="0.01" min="0.01" required></td>
+            `;
+        }
+    </script>
+    <!-- fim script pedido novo -->
   </head>
 
   <body>
@@ -120,8 +133,45 @@ include "config.php";
               <div class="col-xl-12">
                 <div class="card mb-3">
                   <div class="card-body">
-                    
-                  <?php include "../pedidos/cadastro_pedido.php"; ?>
+                                              <?php /*include "../pedidos/cadastro_pedido.php"; */?> <!-- Pedido antigo -->
+
+                    <!--Pedido novo -->
+                    <form action="gravaropedido.php" method="POST">
+                      <h3>Dados gerais do pedido</h3>
+                      <label for="customer_name">Nome do Cliente:</label><br>
+                        <input type="text" id="customer_name" name="customer_name" required><br><br>
+
+                      <label for="customer_email">Email do Cliente:</label><br>
+                        <input type="email" id="customer_email" name="customer_email" required><br><br>
+
+                      <label for="invoice_date">Data da Fatura:</label><br>
+                        <input type="date" id="invoice_date" name="invoice_date" required><br><br>
+
+                      <label for="due_date">Data de Vencimento:</label><br>
+                        <input type="date" id="due_date" name="due_date" required><br><br>
+
+                      <label for="total_amount">Valor Total:</label><br>
+                        <input type="number" step="0.01" id="total_amount" name="total_amount" required><br><br>
+
+                      <h3>Itens do pedido</h3>
+                        <table id="items-table" border="1">
+                            <tr>
+                                <th>Descrição</th>
+                                <th>Quantidade</th>
+                                <th>Preço Unitário</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="item_description[]" required></td>
+                                <td><input type="number" name="item_quantity[]" step="1" min="1" required></td>
+                                <td><input type="number" name="item_unit_price[]" step="0.01" min="0.01" required></td>
+                            </tr>
+                        </table>
+                      
+                        <button type="button" onclick="addItemRow()">Adicionar Item</button><br><br>
+
+                    <button type="submit">Salvar</button>
+                    </form>
+                    <!--Fim pedido novo -->
 
                   </div>
                 </div>
