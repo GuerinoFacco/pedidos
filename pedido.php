@@ -27,19 +27,6 @@ include "config.php";
     <!-- Date Range CSS -->
     <link rel="stylesheet" href="assets/vendor/daterange/daterange.css" />
     <link rel="stylesheet" href="assets/dist/css/select2.min.css">
-    <!-- script pedido novo -->
-    <script>
-        function addItemRow() {
-            const table = document.getElementById('items-table');
-            const row = table.insertRow();
-            row.innerHTML = `
-                <td><input type="text" name="item_description[]" required></td>
-                <td><input type="number" name="item_quantity[]" step="1" min="1" required></td>
-                <td><input type="number" name="item_unit_price[]" step="0.01" min="0.01" required></td>
-            `;
-        }
-    </script>
-    <!-- fim script pedido novo -->
   </head>
 
   <body>
@@ -174,19 +161,42 @@ include "config.php";
 
                       <h3>Itens do pedido</h3>
                         <table id="items-table">
+                          <thead>
                             <tr>
-                                <th>Descrição</th>
-                                <th>Quantidade</th>
-                                <th>Preço Unitário</th>
+                                <th>#</th>
+                                <th>PRODUTO</th>
+                                <th>QUANTIDADE</th>
+                                <th>PREÇO</th>
+                                <th>SUBTOTAL</th>
+                                <th style="text-align: right;">AÇÂO</th>
                             </tr>
-                            <tr>
-                                <td><input type="text" name="item_description[]" required></td>
-                                <td><input type="number" name="item_quantity[]" step="1" min="1" required></td>
-                                <td><input type="number" name="item_unit_price[]" step="0.01" min="0.01" required></td>
+                          </thead>
+                          <tbody id="table-body">
+                            <tr class="single-row">
+                            <td><input type="number" value="1" name="id" class="idProd"></td>
+                                <td><input type="text" name="produto[]" required></td>
+                                <td><input type="number" name="qtdped[]" step="1" min="1" required></td>
+                                <td><input type="number" name="preuni[]" step="0.01" min="0.01" required></td>
+                                <td><input type="number" placeholder="0" name="amount" class="amount" id="amount" disabled></td>
+                                <td style="text-align: right;"><span class="material-icons">1</span></td>
                             </tr>
+
+                            <tr style="padding-left: 20px">
+                                <td class="dashed "><div class="float">
+                                    <a href="#" class="float" id="add-row">
+                                        <span class="material-icons plus">Adicionar item</span>
+                                    </a>
+                                </div>
+                            </td>
+                                <td class="dashed"></td>
+                                <td class="dashed"></td>
+                                <td class="dashed"></td>
+                                <td class="dashed"></td>
+                            </tr>
+
+
+                          </tbody>  
                         </table>
-                      
-                        <button type="button" onclick="addItemRow()">Adicionar Item</button><br><br>
 
                     <button type="submit">Salvar</button>
                     </form>
@@ -215,6 +225,9 @@ include "config.php";
     <!-- Page wrapper end -->
 
     <!-- ************ JavaScript Files ************* -->
+
+    <script src="assets/js/script_ped.js"></script>
+
     <!-- Required jQuery first, then Bootstrap Bundle JS -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -244,6 +257,7 @@ include "config.php";
         $('.form-select').select2();
         });
     </script>
+     
   </body>
 
 </html>

@@ -32,21 +32,23 @@ try {
     $invoice_id = $pdo->lastInsertId();
 
     // Captura os dados dos itens
-    $item_descriptions = $_POST['item_description'];
-    $item_quantities = $_POST['item_quantity'];
-    $item_unit_prices = $_POST['item_unit_price'];
+    $produto = $_POST['produto'];
+    $qtdped = $_POST['qtdped'];
+    $preuni = $_POST['preuni'];
+    $totite = $_POST['totite'];
 
     // Insere os itens na tabela invoice_items
-    $sql = "INSERT INTO invoice_items (invoice_id, description, quantity, unit_price)
-            VALUES (:invoice_id, :description, :quantity, :unit_price)";
+    $sql = "INSERT INTO invoice_items (invoice_id, produto, qtdped, preuni, totite)
+            VALUES (:invoice_id, :produto, :qtdped, :preuni, :totite)";
     $stmt = $pdo->prepare($sql);
 
-    for ($i = 0; $i < count($item_descriptions); $i++) {
+    for ($i = 0; $i < count($produto); $i++) {
         $stmt->execute([
             ':invoice_id' => $invoice_id,
-            ':description' => $item_descriptions[$i],
-            ':quantity' => $item_quantities[$i],
-            ':unit_price' => $item_unit_prices[$i]
+            ':produto' => $produto[$i],
+            ':qtdped' => $qtdped[$i],
+            ':preuni' => $preuni[$i],
+            ':totite' => $totite[$i]
         ]);
     }
 
