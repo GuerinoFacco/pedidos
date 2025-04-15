@@ -12,26 +12,20 @@ try {
 
     // Captura os dados da fatura
     $NumeroPedido = $_POST['NumeroPedido'];
-    $NomCli = $_POST['NomCli'];
-    $customer_email = $_POST['customer_email'];
-    $invoice_date = $_POST['invoice_date'];
-    $due_date = $_POST['due_date'];
-    $total_amount = $_POST['total_amount'];
-
+    $NomCli = $_POST['NomCli'];    
+    $DatEmi = $_POST['DatEmi'];
+   
     // Inicia uma transação
     $pdo->beginTransaction();
 
     // Insere a fatura na tabela invoices
-    $sql = "INSERT INTO invoices (id,NumeroPedido,NomCli, customer_email, invoice_date, due_date, total_amount)
-            VALUES (null, :NumeroPedido, :NomCli, :customer_email, :invoice_date, :due_date, :total_amount)";
+    $sql = "INSERT INTO invoices (id,NumeroPedido,NomCli, DatEmi)
+            VALUES (null, :NumeroPedido, :NomCli, :DatEmi)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         ':NumeroPedido' => $NumeroPedido,
         ':NomCli' => $NomCli,
-        ':customer_email' => $customer_email,
-        ':invoice_date' => $invoice_date,
-        ':due_date' => $due_date,
-        ':total_amount' => $total_amount
+        ':DatEmi' => $DatEmi
     ]);
 
     // Obtém o ID da fatura recém-criada

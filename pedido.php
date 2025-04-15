@@ -142,6 +142,7 @@ include "config.php";
                       <div class="invoice-header">
                         <div class="title-date">
                           <h3>Dados gerais do pedido</h3>
+                          <input id="DatEmi" name="DatEmi" style="border: none; background-color: #eaeceb;" class="date" value="<?php echo date("d/m/Y")?>" readonly ></input>
                         </div>
                           <div class="space"></div>
                           <p class="invoice-number">Nº
@@ -155,7 +156,7 @@ include "config.php";
                               ?>     
                           <input id="NumeroPedido" name="NumeroPedido" class="form-control" style="text-align: center;" value="<?php echo $ano;echo $numeroPedido;?>" readonly ></input>    
                           </p>
-                      </div>  
+                      </div>                       
                       <label for="NomCli">Nome do Cliente:</label><br>
                           <select name="NomCli" class="form-select" id="single-select-field" data-placeholder="Escolha..." required>
                             <option selected="" disabled="" value=""></option>
@@ -168,22 +169,11 @@ include "config.php";
                             ?>
                         </select>
 
-                        <input type="text" id="NomCli" name="NomCli" required><br><br>
+                        <div class="space2"></div>
 
-                      <label for="customer_email">Email do Cliente:</label><br>
-                        <input type="email" id="customer_email" name="customer_email" required><br><br>
-
-                      <label for="invoice_date">Data da Fatura:</label><br>
-                        <input type="date" id="invoice_date" name="invoice_date" required><br><br>
-
-                      <label for="due_date">Data de Vencimento:</label><br>
-                        <input type="date" id="due_date" name="due_date" required><br><br>
-
-                      <label for="total_amount">Valor Total:</label><br>
-                        <input type="number" step="0.01" id="total_amount" name="total_amount" required><br><br>
 
                       <h3>Itens do pedido</h3>
-                        <table id="items-table" border="1">
+                        <table id="items-table">
                             <tr>
                                 <th>Descrição</th>
                                 <th>Quantidade</th>
