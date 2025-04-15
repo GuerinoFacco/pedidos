@@ -18,6 +18,8 @@ include "config.php";
     <link rel="shortcut icon" href="assets/images/favicon.svg" />
     <!-- Icomoon Font Icons css -->
     <link rel="stylesheet" href="assets/fonts/icomoon/style.css" />
+    <!-- pedido CSS -->
+    <link rel="stylesheet" href="assets/css/styles_ped.css" />
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/main.min.css" />
     <!-- Scrollbar CSS -->
@@ -137,10 +139,36 @@ include "config.php";
 
                     <!--Pedido novo -->
                     <form action="gravaropedido.php" method="POST">
-                      <h3>Dados gerais do pedido</h3>
-                      
-                      <label for="customer_name">Nome do Cliente:</label><br>
-                        <input type="text" id="customer_name" name="customer_name" required><br><br>
+                      <div class="invoice-header">
+                        <div class="title-date">
+                          <h3>Dados gerais do pedido</h3>
+                        </div>
+                          <div class="space"></div>
+                          <p class="invoice-number">Nº
+                              <?php
+                                  $ano=date('y');
+                                  $cmd1 = "SELECT MAX(`NumeroPedido`) as numpedido FROM `pedsite` WHERE 1";
+                                        $rs1=mysqli_query($conecta,$cmd1);
+                                        $row1=mysqli_fetch_array($rs1,MYSQLI_ASSOC);
+                                        $numpedido=$row1['numpedido'];
+                                  $numeroPedido=$numpedido + 1; 
+                              ?>     
+                          <input id="NumeroPedido" name="NumeroPedido" class="form-control" style="text-align: center;" value="<?php echo $ano;echo $numeroPedido;?>" readonly ></input>    
+                          </p>
+                      </div>  
+                      <label for="NomCli">Nome do Cliente:</label><br>
+                          <select name="NomCli" class="form-select" id="single-select-field" data-placeholder="Escolha..." required>
+                            <option selected="" disabled="" value=""></option>
+                            <?php
+                            $cmd = "SELECT * FROM `e085cli` WHERE 1 ORDER BY 'NomCli'";
+                            $rs=mysqli_query($conecta,$cmd);								
+                            while($row=mysqli_fetch_array($rs,MYSQLI_ASSOC)){
+                              echo "<option value=".$row['CgcCpf']." - ".$row['NomCli'].">".$row['NomCli']." - ".$row['CidCli']." - ".$row['SigUfs']." - CNPJ/CPF:".$row['CgcCpf']."</option>";
+                            }
+                            ?>
+                        </select>
+
+                        <input type="text" id="NomCli" name="NomCli" required><br><br>
 
                       <label for="customer_email">Email do Cliente:</label><br>
                         <input type="email" id="customer_email" name="customer_email" required><br><br>

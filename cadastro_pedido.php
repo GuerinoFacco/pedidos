@@ -1,3 +1,11 @@
+<?php
+include "config.php";
+$conecta = mysqli_connect($host, $user, $pass, $banco);
+if (mysqli_connect_errno())
+  {
+  echo "Falha ao conectar o MySQL: " . mysqli_connect_error();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

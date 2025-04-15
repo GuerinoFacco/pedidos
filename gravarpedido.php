@@ -11,7 +11,8 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Captura os dados da fatura
-    $customer_name = $_POST['customer_name'];
+    $NumeroPedido = $_POST['NumeroPedido'];
+    $NomCli = $_POST['NomCli'];
     $customer_email = $_POST['customer_email'];
     $invoice_date = $_POST['invoice_date'];
     $due_date = $_POST['due_date'];
@@ -21,11 +22,12 @@ try {
     $pdo->beginTransaction();
 
     // Insere a fatura na tabela invoices
-    $sql = "INSERT INTO invoices (customer_name, customer_email, invoice_date, due_date, total_amount)
-            VALUES (:customer_name, :customer_email, :invoice_date, :due_date, :total_amount)";
+    $sql = "INSERT INTO invoices (id,NumeroPedido,NomCli, customer_email, invoice_date, due_date, total_amount)
+            VALUES (null, :NumeroPedido, :NomCli, :customer_email, :invoice_date, :due_date, :total_amount)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        ':customer_name' => $customer_name,
+        ':NumeroPedido' => $NumeroPedido,
+        ':NomCli' => $NomCli,
         ':customer_email' => $customer_email,
         ':invoice_date' => $invoice_date,
         ':due_date' => $due_date,
