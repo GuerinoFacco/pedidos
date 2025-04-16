@@ -9484,30 +9484,49 @@ margin-left:0}
  display:table-cell !important}
  .d-print-flex{
  display:flex !important}
- .d-print-inline-flex{
- display:inline-flex !important}
- .d-print-none{
- display:none !important}
- }
- body{
- background:#dee3df}
- *::-webkit-scrollbar{
- width:.5rem;
- height:.5rem}
+
+.d-print-inline-flex{
+   display:inline-flex !important
+}
+
+.d-print-none{
+   display:none !important}
+}
+
+body{
+   background:#dee3df
+}
+
+*::-webkit-scrollbar{
+   width:.5rem;
+   height:.5rem
+}
+
  *::-webkit-scrollbar-track{
- background:#ccd2da}
+background:#ccd2da
+}
+
  *::-webkit-scrollbar-thumb{
- background-color:#e2e5ec;
- border:3px solid #9ea7b1}
- a{
- color:#41505f;
- text-decoration:none}
- a:hover{
- color:#212830}
- .badge{
- font-weight:600}
- .breadcrumb{
- margin:0}
+   background-color:#e2e5ec;
+   border:3px solid #9ea7b1
+}
+
+a{
+   color:#41505f;
+   text-decoration:none
+}
+
+a:hover{
+   color:#212830
+}
+
+.badge{
+   font-weight:600
+}
+
+.breadcrumb{
+   margin-top:10px
+}
  .breadcrumb .breadcrumb-item{
  display:flex;
  align-items:center}
@@ -9808,44 +9827,34 @@ margin-left:0}
    background:#f3f5f9
 }
  
-.navbar .nav-link{
- 
-   color:#f3f5f9;
- 
-   padding:13px 10px 13px 10px !important;
- 
-   display:flex;
- 
-   align-items:center
+.navbar .nav-link{ 
+   color:#f3f5f9; 
+   padding:13px 10px 13px 10px !important; 
+   display:flex; 
+   align-items:center;
+   line-height:2
 }
  
-.navbar .nav-link i{
- 
-   margin:0 4px 0 0;
- 
+.navbar .nav-link i{ 
+   margin:0 4px 0 0; 
    font-size:1.2rem
 }
  
-.navbar .nav-link.show{
- 
+.navbar .nav-link.show{ 
    color:#fff
 }
  
 @media(max-width: 991.98px){
  
-.navbar{
- 
+.navbar{ 
    padding:0 .75rem;
  z-index:110
 }
  
-.navbar .nav-link{
- 
-   -webkit-border-radius:8px;
- 
+.navbar .nav-link{ 
+   -webkit-border-radius:8px; 
    -moz-border-radius:8px;
- 
-   border-radius:8px
+    border-radius:8px
 }
  
 .navbar .active-link .nav-link{
@@ -10069,7 +10078,8 @@ margin-left:0}
  padding:0rem .75rem 1rem .75rem;
  height:calc(100vh - 170px);
  overflow:auto;
- margin-top:132px}
+ margin-top:132px
+}
  @media(max-width: 991.98px){
  .app-body{
  min-height:calc(100vh - 116px);

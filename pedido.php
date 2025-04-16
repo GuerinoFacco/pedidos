@@ -125,7 +125,7 @@ include "config.php";
                                               <?php /*include "../pedidos/cadastro_pedido.php"; */?> <!-- Pedido antigo -->
 
                     <!--Pedido novo -->
-                    <form action="gravaropedido.php" method="POST">
+                    <form action="gravarpedido.php" method="POST">
                       <div class="invoice-header">
                         <div class="title-date">
                           <h3>Dados gerais do pedido</h3>
@@ -163,8 +163,8 @@ include "config.php";
                         <table id="items-table">
                           <thead>
                             <tr>
-                                <th>#</th>
-                                <th>PRODUTO</th>
+                                <th style="width: 100px;">#</th>
+                                <th style="width: 700px;">PRODUTO</th>
                                 <th>QUANTIDADE</th>
                                 <th>PREÇO</th>
                                 <th>SUBTOTAL</th>
@@ -173,18 +173,18 @@ include "config.php";
                           </thead>
                           <tbody id="table-body">
                             <tr class="single-row">
-                            <td><input type="number" value="1" name="id" class="idProd"></td>
-                                <td><input type="text" name="produto[]" required></td>
-                                <td><input type="number" name="qtdped[]" step="1" min="1" required></td>
-                                <td><input type="number" name="preuni[]" step="0.01" min="0.01" required></td>
-                                <td><input type="number" placeholder="0" name="amount" class="amount" id="amount" disabled></td>
-                                <td style="text-align: right;"><span class="material-icons">1</span></td>
+                            <td><input type="number" value="1" name="id" class="idProd" readonly ></td>
+                                <td><input style="max-width: 600px; width: 600px" type="text" placeholder="Produto" name="produto[]" required></td>
+                                <td><input type="number" name="qtdped[]" id="unit" step="1" min="1" onkeyup="getInput()" required></td>
+                                <td><input type="number" name="preuni[]" id="price" step="0.01" min="0.01" onkeyup="getInput()" required></td>
+                                <td><input type="number" placeholder="0" name="totite" class="amount" id="amount" disabled></td>
+                                <td style="text-align: right;"><span class="fs-3 icon-trash-2"></span></td>                                
                             </tr>
 
                             <tr style="padding-left: 20px">
                                 <td class="dashed "><div class="float">
                                     <a href="#" class="float" id="add-row">
-                                        <span class="material-icons plus">Adicionar item</span>
+                                        <span class="fs-3 icon-plus"></span>
                                     </a>
                                 </div>
                             </td>
@@ -198,7 +198,11 @@ include "config.php";
                           </tbody>  
                         </table>
 
-                    <button type="submit">Salvar</button>
+                        <div class="card-footer">
+                            <button class="btn btn-flat btn-sm btn-primary" type="submit">Salvar</button>
+                            <a class="btn btn-flat btn-sm btn-default" href="./inicial.php">Cancel</a>
+                        </div>
+
                     </form>
                     <!--Fim pedido novo -->
 
