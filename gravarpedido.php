@@ -32,9 +32,9 @@ try {
     $pedsite_id	 = $pdo->lastInsertId();
 
     // Captura os dados dos itens
-    $produto = $_POST['produto'];
-    $qtdped = $_POST['qtdped'];
-    $preuni = $_POST['preuni'];
+    $produtos = $_POST['produto'];
+    $qtdpeds = $_POST['qtdped'];
+    $preunis = $_POST['preuni'];
     /*$totite = $_POST['totite'];*/
 
     // Insere os itens na tabela pedsiteitems
@@ -42,19 +42,19 @@ try {
             VALUES (:pedsite_id, :produto, :qtdped, :preuni, 0)";
     $stmt = $pdo->prepare($sql);
 
-    for ($i = 0; $i < count($produto); $i++) {
+    for ($i = 0; $i < count($produtos); $i++) {
         $stmt->execute([
             ':pedsite_id' => $pedsite_id,
-            ':produto' => $produto[$i],
-            ':qtdped' => $qtdped[$i],
-            ':preuni' => $preuni[$i]
+            ':produto' => $produtos[$i],
+            ':qtdped' => $qtdpeds[$i],
+            ':preuni' => $preunis[$i]
         ]);
     }
 
     // Confirma a transação
     $pdo->commit();
-
-    echo "Fatura e itens salvos com sucesso!";
+    echo "<button type=\"botton\" class=\"btn btn-default\" onclick=\"window.close()\">Sair</button>";
+    /*echo "Fatura e itens salvos com sucesso!";*/
 } catch (PDOException $e) {
     // Reverte a transação em caso de erro
     $pdo->rollBack();

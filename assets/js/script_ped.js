@@ -7,7 +7,7 @@ addNewRow =()=> {
     row.className = "single-row";
     tNum++;
     row.innerHTML = `<td><input type="number" value="` + tNum + `" name="id" readonly></td>
-                    <td><input style="max-width: 600px; width: 600px" type="text" placeholder="Produto" name="produto" class="product" id="product"></td>
+                    <td><input style="max-width: 600px; width: 600px" type="text" placeholder="Produto" name="produto[]" class="product" id="product"></td>
                     <td><input type="number" name="qtdped[]" id="unit" step="1" min="1" onkeyup="getInput()" required></td>
                     <td><input type="number" name="preuni[]" id="price" step="0.01" min="0.01" onkeyup="getInput()" required></td>
                     <td><input type="number" placeholder="0" name="totite[]" class="amount" id="amount" disabled></td>
