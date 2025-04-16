@@ -18,8 +18,8 @@ try {
     // Inicia uma transação
     $pdo->beginTransaction();
 
-    // Insere a fatura na tabela invoices
-    $sql = "INSERT INTO invoices (id,NumeroPedido,NomCli, DatEmi)
+    // Insere a fatura na tabela pedsite
+    $sql = "INSERT INTO pedsite (id,NumeroPedido,NomCli, DatEmi)
             VALUES (null, :NumeroPedido, :NomCli, :DatEmi)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
@@ -29,26 +29,25 @@ try {
     ]);
 
     // Obtém o ID da fatura recém-criada
-    $invoice_id = $pdo->lastInsertId();
+    $pedsite_id	 = $pdo->lastInsertId();
 
     // Captura os dados dos itens
     $produto = $_POST['produto'];
     $qtdped = $_POST['qtdped'];
     $preuni = $_POST['preuni'];
-    $totite = $_POST['totite'];
+    /*$totite = $_POST['totite'];*/
 
-    // Insere os itens na tabela invoice_items
-    $sql = "INSERT INTO invoice_items (invoice_id, produto, qtdped, preuni, totite)
-            VALUES (:invoice_id, :produto, :qtdped, :preuni, :totite)";
+    // Insere os itens na tabela pedsiteitems
+    $sql = "INSERT INTO pedsiteitems (pedsite_id, produto, qtdped, preuni, totite)
+            VALUES (:pedsite_id, :produto, :qtdped, :preuni, 0)";
     $stmt = $pdo->prepare($sql);
 
     for ($i = 0; $i < count($produto); $i++) {
         $stmt->execute([
-            ':invoice_id' => $invoice_id,
+            ':pedsite_id' => $pedsite_id,
             ':produto' => $produto[$i],
             ':qtdped' => $qtdped[$i],
-            ':preuni' => $preuni[$i],
-            ':totite' => $totite[$i]
+            ':preuni' => $preuni[$i]
         ]);
     }
 
