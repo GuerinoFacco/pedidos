@@ -172,27 +172,34 @@ if (mysqli_connect_errno())
                             echo "<td>".$sigufs."</td>";
                             echo "<td>0</td>";
                             echo "<td>";
-                              if ($row['nomcli'] == 1){
-                                echo "<span class='badge bg-info'>Aberto total</span>";
-                              } else if ($row['nomcli'] == 2){
-                                echo "<span class='badge bg-warning'>Aberto parcial</span>";
-                              } else if ($row['nomcli'] == 4){
-                                echo "<span class='badge bg-success'>Faturado</span>";
-                              } else if ($row['nomcli'] == 5){
+                              if ($row['SitPed'] == 1){
+                                echo "<span class='badge bg-info'>Digitado</span>";
+                              } else if ($row['SitPed'] == 2){
+                                echo "<span class='badge bg-success'>Enviado</span>";
+                              } else if ($row['SitPed'] == 3){
                                 echo "<span class='badge bg-danger'>Cancelado</span>";
-                              } else {
-                                echo "<span class='badge bg-secundary'>Aberto total</span>";
-                              }
-                              
+                              }                               
                             echo "</td>";
                             echo "<td>";
-
-                            echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-primary'><i class='icon-edit'></i></a>";
+                            if ($row['SitPed'] == 1){
+                              echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-primary'><i class='icon-edit'></i></a>";
+                              echo'    |    ';
+                              echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-info'><i class='icon-mail'></i></a>";
+                              echo'    |    ';
+                              echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-danger'><i class='icon-trash'></i></a>";
+                            } else if ($row['SitPed'] == 2){
+                              echo "<a href='#' class='btn btn-dark'><i class='icon-edit'></i></a>";
                             echo'    |    ';
-                            echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-info'><i class='icon-mail'></i></a>";
+                            echo "<a href='#' class='btn btn-dark'><i class='icon-mail'></i></a>";
                             echo'    |    ';
-                            echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-danger'><i class='icon-trash'></i></a>";
-
+                            echo "<a href='#' class='btn btn-dark'><i class='icon-trash'></i></a>";
+                            } else if ($row['SitPed'] == 3){
+                              echo "<a href='#' class='btn btn-dark'><i class='icon-edit'></i></a>";
+                            echo'    |    ';
+                            echo "<a href='#' class='btn btn-dark'><i class='icon-mail'></i></a>";
+                            echo'    |    ';
+                            echo "<a href='#' class='btn btn-dark'><i class='icon-trash'></i></a>";
+                            }
                             echo"</td></tr>"; 
                             }
                           ?>

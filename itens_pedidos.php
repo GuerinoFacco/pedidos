@@ -70,7 +70,7 @@ if (mysqli_connect_errno())
                     <div class="card mb-3">
                       <div class="card-body">
                         <div class="mb-2 d-flex align-items-end justify-content-between">
-                          <h5 class="card-title">Itens do pedido </h5>
+                          <h5 class="card-title">ITENS DO PEDIDO NUMERO <b><?php echo $numped?></b></h5>
                         </div>
                         <div class="table-outer">
                           <div class="table-responsive">
@@ -136,10 +136,17 @@ if (mysqli_connect_errno())
                                   }
                                 ?>
                               </tbody>
-                            </table>
+                            </table> 
                           </div>
                         </div>
                       </div>
+
+                      <div class="card">
+                      <div style="border-radius:200px; height:50px; width:50px; background: #F8FAF5; margin:0 auto;">
+                      <a href="#" onclick="window.close()" class="text-decoration-none"><i style="color: #9ABC66; font-size: 30px; line-height: 50px; margin-left:10px;" class="checkmark">✓</i></a>
+                      </div>
+
+
                     </div>
                   </div>
                 </div>
