@@ -34,8 +34,7 @@ try {
     // Captura os dados dos itens
     $produtos = $_POST['produto'];
     $qtdpeds = $_POST['qtdped'];
-    $preunis = $_POST['preuni'];
-    /*$totite = $_POST['totite'];*/
+    $preunis = $_POST['preuni'];    
 
     // Insere os itens na tabela pedsiteitems
     $sql = "INSERT INTO pedsiteitems (pedsite_id, produto, qtdped, preuni, totite)

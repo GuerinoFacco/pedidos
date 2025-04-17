@@ -133,7 +133,7 @@ include "config.php";
                           <p class="invoice-number">Nº
                               <?php
                                   $ano=date('y');
-                                  $cmd1 = "SELECT MAX(`NumeroPedido`) as numpedido FROM `pedsite` WHERE 1";
+                                  $cmd1 = "SELECT substring(MAX(`NumeroPedido`),3,7) as numpedido FROM `pedsite` WHERE 1";
                                         $rs1=mysqli_query($conecta,$cmd1);
                                         $row1=mysqli_fetch_array($rs1,MYSQLI_ASSOC);
                                         $numpedido=$row1['numpedido'];
@@ -175,7 +175,7 @@ include "config.php";
                                 <td><input style="max-width: 600px; width: 600px" type="text" placeholder="Produto" name="produto[]" required></td>
                                 <td><input type="number" name="qtdped[]" id="unit" step="1" min="1" onkeyup="getInput()" required></td>
                                 <td><input type="number" name="preuni[]" id="price" step="0.01" min="0.01" onkeyup="getInput()" required></td>
-                                <td><input type="number" name="totite[]" class="amount" id="amount" disabled></td>
+                                <td><input type="number" name="amount" class="amount" id="amount" disabled></td>
                                 <td style="text-align: right;"><span class="fs-3 icon-trash-2"></span></td>                                
                             </tr>
 
@@ -191,10 +191,11 @@ include "config.php";
                                 <td class="dashed"></td>
                                 <td class="dashed"></td>
                             </tr>
-
-
-                          </tbody>  
+                          </tbody> 
+                          
                         </table>
+
+                        <div id="sum"><span class="totaltitulo" >Total</span><input type="text" placeholder="0.00" name="total" class="total" id="total" disabled></div>
 
                         <div class="card-footer">
                             <button class="btn btn-flat btn-sm btn-primary" type="submit">Salvar</button>

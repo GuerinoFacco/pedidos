@@ -198,11 +198,11 @@ if (mysqli_connect_errno())
                               echo "<a href=\"#\" onclick=\"window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')\">
                               <i class='icon-check-circle'></a>";
                               echo "</button>";
-                            echo"</td></tr>";                           
+                            echo"</td></tr>"; 
                             }
                           ?>
                         </tbody>
-                      </table>
+                      </table>                     
                     </div>
                   </div>
                 </div>

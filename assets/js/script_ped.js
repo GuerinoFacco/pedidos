@@ -10,7 +10,7 @@ addNewRow =()=> {
                     <td><input style="max-width: 600px; width: 600px" type="text" placeholder="Produto" name="produto[]" class="product" id="product"></td>
                     <td><input type="number" name="qtdped[]" id="unit" step="1" min="1" onkeyup="getInput()" required></td>
                     <td><input type="number" name="preuni[]" id="price" step="0.01" min="0.01" onkeyup="getInput()" required></td>
-                    <td><input type="number" placeholder="0" name="totite[]" class="amount" id="amount" disabled></td>
+                    <td><input type="number" placeholder="0" name="amount" class="amount" id="amount" disabled></td>
                     <td style="text-align: right;"><span class="fs-3 icon-trash-2" action="delete"></span></td>`
     
     tBody.insertBefore(row, tBody.lastElementChild.previousSibling);
