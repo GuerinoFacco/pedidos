@@ -53,8 +53,7 @@ include "config.php";
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                   <a class="nav-link" href="inicial.php" ><i class="icon-stacked_line_chart"></i> Dashboards</a>
-                </li>
-            
+                </li>            
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -68,8 +67,7 @@ include "config.php";
                       <a class="dropdown-item" href="cadastro_clientes.php"><span>Cadastrar cliente</span></a>
                     </li>
                   </ul>
-                </li>
-          
+                </li>          
                 <li class="nav-item dropdown active-link">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -84,7 +82,6 @@ include "config.php";
                     </li>
                   </ul>
                 </li>
-
                 <li class="nav-item ">
                   <a class="nav-link" href="index.php"><i class="icon-login"></i>Logout</a>
                 </li>
@@ -153,10 +150,7 @@ include "config.php";
                             }
                             ?>
                         </select>
-
                         <div class="space2"></div>
-
-
                       <h3>Itens do pedido</h3>
                         <table id="items-table">
                           <thead>
@@ -178,7 +172,6 @@ include "config.php";
                                 <td><input type="number" name="amount" class="amount" id="amount" disabled></td>
                                 <td style="text-align: right;"><span class="fs-3 icon-trash-2"></span></td>                                
                             </tr>
-
                             <tr style="padding-left: 20px">
                                 <td class="dashed "><div class="float">
                                     <a href="#" class="float" id="add-row">
@@ -191,20 +184,15 @@ include "config.php";
                                 <td class="dashed"></td>
                                 <td class="dashed"></td>
                             </tr>
-                          </tbody> 
-                          
+                          </tbody>                           
                         </table>
-
                         <div id="sum"><span class="totaltitulo" >Total</span><input type="text" placeholder="0.00" name="total" class="total" id="total" disabled></div>
-
                         <div class="card-footer">
                             <button class="btn btn-flat btn-sm btn-primary" type="submit">Salvar</button>
                             <a class="btn btn-flat btn-sm btn-default" href="./inicial.php">Cancel</a>
                         </div>
-
                     </form>
                     <!--Fim pedido novo -->
-
                   </div>
                 </div>
               </div>

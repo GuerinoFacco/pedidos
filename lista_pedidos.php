@@ -23,7 +23,6 @@ if (mysqli_connect_errno())
     <link rel="stylesheet" href="assets/css/main.min.css" />
     <!-- Scrollbar CSS -->
     <link rel="stylesheet" href="assets/vendor/overlay-scroll/OverlayScrollbars.min.css" />
-
     <!-- Data Tables -->
     <link rel="stylesheet" href="assets/vendor/datatables/dataTables.bs5.css" />
     <link rel="stylesheet" href="assets/vendor/datatables/dataTables.bs5-custom.css" />
@@ -54,8 +53,7 @@ if (mysqli_connect_errno())
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                   <a class="nav-link" href="inicial.php" ><i class="icon-stacked_line_chart"></i> Dashboards</a>
-                </li>
-            
+                </li>            
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -69,8 +67,7 @@ if (mysqli_connect_errno())
                       <a class="dropdown-item" href="cadastro_clientes.php"><span>Cadastrar cliente</span></a>
                     </li>
                   </ul>
-                </li>
-          
+                </li>          
                 <li class="nav-item dropdown active-link">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -85,7 +82,6 @@ if (mysqli_connect_errno())
                     </li>
                   </ul>
                 </li>
-
                 <li class="nav-item ">
                   <a class="nav-link" href="index.php"><i class="icon-login"></i>Logout</a>
                 </li>
@@ -128,19 +124,17 @@ if (mysqli_connect_errno())
                     
 
                     <div class="card-header"> 
-                      <div class="row gx-3">
-                        
-                          <div class="col-6">
-                              <div class="mb-2 d-flex justify-content-between">
-                                <h5 class="card-title">PEDIDOS DIGITADOS</h5>
-                              </div>
-                          </div>
-                          <div class="col-6">
-                              <button type="button" class="btn btn-info">
-                              <a class="dropdown-item" href="pedido.php">
-                              <i class="icon-archive">  Adicionar pedido</i></a></button>
-                          </div>
-                        
+                      <div class="row gx-3">                        
+                        <div class="col-6">
+                            <div class="mb-2 d-flex justify-content-between">
+                              <h5 class="card-title">PEDIDOS DIGITADOS</h5>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-info">
+                            <a class="dropdown-item" href="pedido.php">
+                            <i class="icon-archive">  Adicionar pedido</i></a></button>
+                        </div>                        
                       </div>
                     </div>
 
@@ -156,7 +150,7 @@ if (mysqli_connect_errno())
                           <th>Estado</th>
                           <th>Total</th>
                           <th>Status</th>
-                          <th>Ação</th>
+                          <th style="width:120px;">Ação</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -192,12 +186,13 @@ if (mysqli_connect_errno())
                               
                             echo "</td>";
                             echo "<td>";
-                              echo "<button class='btn btn-outline-primary btn-sm' data-bs-toggle='tooltip'";
-                              echo "data-bs-placement='top' data-bs-custom-class='custom-tooltip-primary'";
-                              echo "data-bs-title='Itens'>";
-                              echo "<a href=\"#\" onclick=\"window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')\">
-                              <i class='icon-check-circle'></a>";
-                              echo "</button>";
+
+                            echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-primary'><i class='icon-edit'></i></a>";
+                            echo'    |    ';
+                            echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-info'><i class='icon-mail'></i></a>";
+                            echo'    |    ';
+                            echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-danger'><i class='icon-trash'></i></a>";
+
                             echo"</td></tr>"; 
                             }
                           ?>
