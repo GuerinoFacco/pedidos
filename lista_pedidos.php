@@ -121,24 +121,113 @@ if (mysqli_connect_errno())
             <!-- Row start -->
             <div class="row gx-3">
               <div class="col-12">
-
-
                 <!-- Card start -->
-                <div class="card mb-3">
-                  
+                <div class="card mb-3">  
+                  <div class="card-body">
+
+                    
+
                     <div class="card-header"> 
                       <div class="row gx-3">
-                        <div class="col-12">
+                        
+                          <div class="col-6">
+                              <div class="mb-2 d-flex justify-content-between">
+                                <h5 class="card-title">PEDIDOS DIGITADOS</h5>
+                              </div>
+                          </div>
+                          <div class="col-6">
                               <button type="button" class="btn btn-info">
                               <a class="dropdown-item" href="pedido.php">
                               <i class="icon-archive">  Adicionar pedido</i></a></button>
-                        </div>
+                          </div>
+                        
                       </div>
-                    </div> 
-                  
-                  <div class="card-body">
+                    </div>
+
+
                     <div class="table-responsive">
                       <table id="basicExample" class="table table-striped">
+                        <thead>
+                          <tr>
+                          <th>#</th>
+                          <th>Número</th>                          
+                          <th>Cliente</th>
+                          <th>Cidade</th>
+                          <th>Estado</th>
+                          <th>Total</th>
+                          <th>Status</th>
+                          <th>Ação</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                            $cmd = "SELECT * FROM `pedsite` WHERE 1";
+                            $rs=mysqli_query($conecta,$cmd);								
+                            while($row=mysqli_fetch_array($rs,MYSQLI_ASSOC)){
+                            echo "<tr><td>".$row['id']."</td>";
+                            echo "<td>".$row['NumeroPedido']."</td>";
+                            $codcli=$row['nomcli'];
+                              $cmd1 = "SELECT * FROM `e085cli` WHERE `CgcCpf` = '$codcli'";
+                              $rs1=mysqli_query($conecta,$cmd1);
+                              $row1=mysqli_fetch_array($rs1,MYSQLI_ASSOC);
+                              $nomcli=$row1['NomCli'];
+                              $cidcli=$row1['CidCli'];
+                              $sigufs=$row1['SigUfs'];
+                            echo "<td style=\"width: 35%\">".$nomcli."</td>";
+                            echo "<td>".$cidcli."</td>";
+                            echo "<td>".$sigufs."</td>";
+                            echo "<td>0</td>";
+                            echo "<td>";
+                              if ($row['nomcli'] == 1){
+                                echo "<span class='badge bg-info'>Aberto total</span>";
+                              } else if ($row['nomcli'] == 2){
+                                echo "<span class='badge bg-warning'>Aberto parcial</span>";
+                              } else if ($row['nomcli'] == 4){
+                                echo "<span class='badge bg-success'>Faturado</span>";
+                              } else if ($row['nomcli'] == 5){
+                                echo "<span class='badge bg-danger'>Cancelado</span>";
+                              } else {
+                                echo "<span class='badge bg-secundary'>Aberto total</span>";
+                              }
+                              
+                            echo "</td>";
+                            echo "<td>";
+                              echo "<button class='btn btn-outline-primary btn-sm' data-bs-toggle='tooltip'";
+                              echo "data-bs-placement='top' data-bs-custom-class='custom-tooltip-primary'";
+                              echo "data-bs-title='Itens'>";
+                              echo "<a href=\"#\" onclick=\"window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')\">
+                              <i class='icon-check-circle'></a>";
+                              echo "</button>";
+                            echo"</td></tr>";                           
+                            }
+                          ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card end -->
+              </div>
+            </div>
+            <!-- Row end -->
+
+
+
+             
+
+            <!-- Row start -->
+            <div class="row gx-3">
+              <div class="col-12">
+                <!-- Card start -->
+                <div class="card mb-3">        
+                  <div class="card-body">
+
+                    <div class="mb-2 d-flex justify-content-between">
+                      <h5 class="card-title">PEDIDOS FATURADOS</h5>
+                    </div>
+
+                    <div class="table-responsive">
+                      <table id="scrollVertical" class="table table-striped">
                         <thead>
                           <tr>
                           <th>Número</th>
@@ -199,10 +288,18 @@ if (mysqli_connect_errno())
                   </div>
                 </div>
                 <!-- Card end -->
-
               </div>
             </div>
             <!-- Row end -->
+
+
+
+
+
+
+
+
+
 
           </div>
           <!-- Container ends -->

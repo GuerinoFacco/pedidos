@@ -53,8 +53,7 @@ try {
 
     // Confirma a transação
     $pdo->commit();
-    echo "<button type=\"botton\" class=\"btn btn-default\" onclick=\"window.close()\">Sair</button>";
-    /*echo "Fatura e itens salvos com sucesso!";*/
+    header('Location: gravacao_sucesso.php');
 } catch (PDOException $e) {
     // Reverte a transação em caso de erro
     $pdo->rollBack();
