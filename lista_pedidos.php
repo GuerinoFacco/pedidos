@@ -5,6 +5,13 @@ if (mysqli_connect_errno())
   {
   echo "Falha ao conectar o MySQL: " . mysqli_connect_error();
   }
+if(isset($_GET["id"])){
+  $id=$_GET["id"];
+  $cmd1 = "UPDATE `pedsite` SET `SitPed`='3' WHERE `id`=$id";
+  $rs1=mysqli_query($conecta,$cmd1);
+  header("location:lista_pedidos.php");
+  die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -182,11 +189,11 @@ if (mysqli_connect_errno())
                             echo "</td>";
                             echo "<td>";
                             if ($row['SitPed'] == 1){
-                              echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-primary'><i class='icon-edit'></i></a>";
+                              echo "<a href='#' onclick='window.open('cancelarpedido.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-primary'><i class='icon-edit'></i></a>";
                               echo'    |    ';
-                              echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-info'><i class='icon-mail'></i></a>";
+                              echo "<a href='#' onclick='window.open('cancelarpedido.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-info'><i class='icon-mail'></i></a>";
                               echo'    |    ';
-                              echo "<a href='#' onclick='window.open('itens_pedidos.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-danger'><i class='icon-trash'></i></a>";
+                              echo "<a href='#' onclick='cancelar(value=3,id=".$row['id'].")' class='btn btn-danger'><i class='icon-trash'></i></a>";
                             } else if ($row['SitPed'] == 2){
                               echo "<a href='#' class='btn btn-dark'><i class='icon-edit'></i></a>";
                             echo'    |    ';
@@ -278,7 +285,7 @@ if (mysqli_connect_errno())
                               echo "<button class='btn btn-outline-primary btn-sm' data-bs-toggle='tooltip'";
                               echo "data-bs-placement='top' data-bs-custom-class='custom-tooltip-primary'";
                               echo "data-bs-title='Itens'>";
-                              echo "<a href=\"#\" onclick=\"window.open('itens_pedidos.php?numped=".$row['NumPed']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')\">
+                              echo "<a href=\"#\" onclick=\"window.open('itens_pedidos.php?numped=".$row['NumPed']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1100, HEIGHT=500')\">
                               <i class='icon-check-circle'></a>";
                               echo "</button>";
                             echo"</td></tr>";                           
@@ -347,6 +354,17 @@ if (mysqli_connect_errno())
 
     <!-- Custom JS files -->
     <script src="assets/js/custom.js"></script>
+
+    <!-- Função cancelar -->
+    <script type="text/javascript">
+      function cancelar(value,id) {
+        //alert(id);
+        let url = "http://localhost/pedidos/lista_pedidos.php";
+        window.location.href=url+"?id="+id;
+      }
+    </script>
+
+
   </body>
 
 </html>

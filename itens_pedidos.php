@@ -39,7 +39,7 @@ if (mysqli_connect_errno())
       <div class="app-container">
 
         <!-- App body starts -->
-        <div class="app-body">
+        <div style="margin-top: 10px; height: 100%;" class="app-body">
 
           <!-- Container starts -->
           <div class="container">
