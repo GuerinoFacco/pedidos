@@ -8,7 +8,7 @@ if (mysqli_connect_errno())
 if(isset($_GET["id"])){
   $id=$_GET["id"];
   $cmd1 = "UPDATE `pedsite` SET `SitPed`='3' WHERE `id`=$id";
-  $rs1=mysqli_query($conecta,$cmd1);
+  mysqli_query($conecta,$cmd1);
   header("location:lista_pedidos.php");
   die();
 }
