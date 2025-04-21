@@ -187,6 +187,9 @@ include "config.php";
                           </tbody>                           
                         </table>
                         <div id="sum"><span class="totaltitulo" >Total</span><input type="text" placeholder="0.00" name="total" class="total" id="total" disabled></div>
+                          <div class="obs">
+                           <input type=text style="max-width: 100%; width: 100%" type="text" placeholder="Observação" name="ObsPed">
+                          </div>
                         <div class="card-footer">
                             <button class="btn btn-flat btn-sm btn-primary" type="submit">Salvar</button>
                             <a class="btn btn-flat btn-sm btn-default" href="./inicial.php">Cancel</a>

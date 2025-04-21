@@ -14,18 +14,20 @@ try {
     $NumeroPedido = $_POST['NumeroPedido'];
     $NomCli = $_POST['NomCli'];    
     $DatEmi = $_POST['DatEmi'];
+    $ObsPed = $_POST['ObsPed']
    
     // Inicia uma transação
     $pdo->beginTransaction();
 
     // Insere a fatura na tabela pedsite
-    $sql = "INSERT INTO pedsite (id,NumeroPedido,NomCli, DatEmi)
-            VALUES (null, :NumeroPedido, :NomCli, :DatEmi)";
+    $sql = "INSERT INTO pedsite (id,NumeroPedido,NomCli, DatEmi, ObsPed)
+            VALUES (null, :NumeroPedido, :NomCli, :DatEmi, :ObsPed)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         ':NumeroPedido' => $NumeroPedido,
         ':NomCli' => $NomCli,
-        ':DatEmi' => $DatEmi
+        ':DatEmi' => $DatEmi,
+        ':ObsPed' => $ObsPed
     ]);
 
     // Obtém o ID da fatura recém-criada
