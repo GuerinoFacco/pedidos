@@ -5,13 +5,73 @@ if (mysqli_connect_errno())
   {
   echo "Falha ao conectar o MySQL: " . mysqli_connect_error();
   }
-if(isset($_GET["id"])){
-  $id=$_GET["id"];
-  $cmd1 = "UPDATE `pedsite` SET `SitPed`='3' WHERE `id`=$id";
-  mysqli_query($conecta,$cmd1);
-  header("location:lista_pedidos.php");
-  die();
-}
+    
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader (created by composer, not included with PHPMailer)
+require 'vendor/autoload.php';
+  
+  if(isset($_GET["id"]) && isset($_GET["acao"])){
+    $id=$_GET["id"];
+    $acao=$_GET["acao"];
+  
+ if ($acao==3) {
+
+    $cmd1 = "UPDATE `pedsite` SET `SitPed`='3' WHERE `id`=$id";
+    mysqli_query($conecta,$cmd1);
+    header("location:lista_pedidos.php");
+    die();
+  } else 
+  if ($acao==2){
+    $mail = new PHPMailer(true);
+
+    try {
+    //Server settings
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                // Debug
+    $mail->isSMTP();                                      // Configura o disparo como SMTP
+    $mail->Host = 'smtp.gmail.com';                        // Especifica o enderço do servidor SMTP da Locaweb
+    $mail->SMTPAuth = true;                               // Habilita a autenticação SMTP
+    $mail->Username = 'guefacco@gmail.com';            // Usuário do SMTP
+    $mail->Password = 'xnsa jtqe rein gyjk';                       // Senha do SMTP
+    $mail->SMTPSecure = 'tls';                            // Habilita criptografia TLS | 'ssl' também é possível
+    $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS` 
+
+    //Recipients
+    $mail->setFrom('guefacco@gmail.com', 'Mailer');
+    $mail->addAddress('guefacco@gmail.com', 'Gue');     //Add a recipient
+    //$mail->addAddress('ellen@example.com');               //Name is optional
+    //$mail->addReplyTo('info@example.com', 'Information');
+    //$mail->addCC('cc@example.com');
+    //$mail->addBCC('bcc@example.com');
+
+    //Attachments
+    //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    
+    $cmd1 = "UPDATE `pedsite` SET `SitPed`='2' WHERE `id`=$id";
+    mysqli_query($conecta,$cmd1);
+    header("location:lista_pedidos.php");
+    die();
+
+    } catch (Exception $e) {
+      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+  }
+  }
+
+  
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +104,7 @@ if(isset($_GET["id"])){
       <div class="app-container">
 
         <!-- App header starts -->
-        <?php include "../pedidos/include/app_header.php"; ?>
+        <?php include "../pedidos/include/app_header.php";?>
         <!-- App header ends -->
 
         <!-- App navbar starts -->
@@ -191,9 +251,9 @@ if(isset($_GET["id"])){
                             if ($row['SitPed'] == 1){
                               echo "<a href='#' onclick='window.open('cancelarpedido.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-primary'><i class='icon-edit'></i></a>";
                               echo'    |    ';
-                              echo "<a href='#' onclick='window.open('cancelarpedido.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-info'><i class='icon-mail'></i></a>";
+                              echo "<a href='#' onclick='enviar(id=".$row['id'].",acao=2)' class='btn btn-info'><i class='icon-mail'></i></a>";
                               echo'    |    ';
-                              echo "<a href='#' onclick='cancelar(value=3,id=".$row['id'].")' class='btn btn-danger'><i class='icon-trash'></i></a>";
+                              echo "<a href='#' onclick='enviar(id=".$row['id'].",acao=3)' class='btn btn-danger'><i class='icon-trash'></i></a>";
                             } else if ($row['SitPed'] == 2){
                               echo "<a href='#' class='btn btn-dark'><i class='icon-edit'></i></a>";
                             echo'    |    ';
@@ -301,15 +361,6 @@ if(isset($_GET["id"])){
             </div>
             <!-- Row end -->
 
-
-
-
-
-
-
-
-
-
           </div>
           <!-- Container ends -->
 
@@ -355,15 +406,14 @@ if(isset($_GET["id"])){
     <!-- Custom JS files -->
     <script src="assets/js/custom.js"></script>
 
-    <!-- Função cancelar -->
+    <!-- Função enviar -->
     <script type="text/javascript">
-      function cancelar(value,id) {
-        //alert(id);
+      function enviar(id,acao) {
+        //alert(acao);
         let url = "http://localhost/pedidos/lista_pedidos.php";
-        window.location.href=url+"?id="+id;
+        window.location.href=url+"?id="+id+"&acao="+acao;
       }
     </script>
-
 
   </body>
 
