@@ -54,8 +54,70 @@ require 'vendor/autoload.php';
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->Subject = 'Pedido de venda via WEB';
+
+    //Variaveis para compor o pedido
+    $cmd1 = "SELECT * FROM `pedsite` WHERE `id` = '$id'";
+    $rs1=mysqli_query($conecta,$cmd1);
+    $row1=mysqli_fetch_array($rs1,MYSQLI_ASSOC);
+    $nomcli=$row1['nomcli'];
+    $datemi=$row1['datemi'];
+    $obsped=$row1['obsped'];
+
+    $cmd2 = "SELECT * FROM `e085cli` WHERE `CgcCpf` = '$nomcli'";
+    $rs2=mysqli_query($conecta,$cmd2);
+    $row2=mysqli_fetch_array($rs2,MYSQLI_ASSOC);
+    $nomecli=$row2['NomCli'];
+    $cidcli=$row2['CidCli'];
+    $sigufs=$row2['SigUfs'];
+
+    $mailbody='<div style="text-align: center;">
+                        <h6 class="fw-semibold">Pedido para:</h6>
+                        <p class="m-0">'.$nomecli.'<br />
+                          CNPJ/CPF:'.$nomcli.'<br />
+                          '.$cidcli.' - '.$sigufs.'
+                        </p>
+                      </div>
+                      <table style="text-align: center;">
+                        <thead>
+                          <tr>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                            <th>Total item</th>
+                          </tr>
+                        </thead>
+                          <tbody>';
+
+     $cmd3 = "SELECT * FROM `pedsiteitems` WHERE `pedsite_id` = '$id'";
+     $rs3=mysqli_query($conecta,$cmd3);
+     while($row3=mysqli_fetch_array($rs3,MYSQLI_ASSOC)){
+    $mailbody .= '<tr><td style="text-align: center;">'.$row3['produto'].'</td>
+                            <td style="text-align: center;">'.$row3['qtdped'].'</td>
+                            <td style="text-align: center;">'.$row3['preuni'].'</td>
+                            <td style="text-align: center;">'.$row3['qtdped']*$row3['preuni'].'</td></tr>';
+                            $totped = $totped + $row3['qtdped']*$row3['preuni'];
+                          };
+   $mailbody .=              '<tr>
+                                <td colspan="2">&nbsp;</td>
+                                <td>
+                                  <p>Subtotal</p>                                  
+                                </td>
+                                <td style="text-align: center;">
+                                  <p>'.$totped.'</p>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="4">
+                                  <h6 class="text-danger">Observação</h6>
+                                  <p class="small m-0">
+                                    '.$obsped.'
+                                  </p>
+                                </td>
+                              </tr>
+                            </tbody>
+                            </table>';
+    $mail->Body = $mailbody;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
