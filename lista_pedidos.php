@@ -284,9 +284,10 @@ require 'vendor/autoload.php';
                         </thead>
                         <tbody>
                           <?php
-                            $cmd = "SELECT * FROM `pedsite` WHERE 1";
+                            $cmd = "SELECT * FROM `pedsite` WHERE 1 order by `NumeroPedido` DESC";
                             $rs=mysqli_query($conecta,$cmd);								
                             while($row=mysqli_fetch_array($rs,MYSQLI_ASSOC)){
+                              $id=$row['id'];
                             echo "<tr><td>".$row['id']."</td>";
                             echo "<td>".$row['NumeroPedido']."</td>";
                             $codcli=$row['nomcli'];
@@ -299,7 +300,13 @@ require 'vendor/autoload.php';
                             echo "<td style=\"width: 35%\">".$nomcli."</td>";
                             echo "<td>".$cidcli."</td>";
                             echo "<td>".$sigufs."</td>";
-                            echo "<td>0</td>";
+                            echo "<td>";
+                              $cmd8 = "SELECT SUM(pedsiteitems.qtdped*pedsiteitems.preuni) as vlrpedidos FROM pedsiteitems,pedsite WHERE pedsite.id=pedsiteitems.pedsite_id and pedsiteitems.pedsite_id = '$id'";
+                              $rs8=mysqli_query($conecta,$cmd8);
+                              $row8=mysqli_fetch_array($rs8,MYSQLI_ASSOC);
+                              $vlrpedidos=$row8['vlrpedidos'];
+                              echo "R$ ".round(($vlrpedidos),2); 
+                            echo "</td>";
                             echo "<td>";
                               if ($row['SitPed'] == 1){
                                 echo "<span class='badge bg-info'>Digitado</span>";

@@ -14,14 +14,14 @@ try {
     $NumeroPedido = $_POST['NumeroPedido'];
     $NomCli = $_POST['NomCli'];    
     $DatEmi = $_POST['DatEmi'];
-    $ObsPed = $_POST['ObsPed']
+    $ObsPed = $_POST['ObsPed'];
    
     // Inicia uma transação
     $pdo->beginTransaction();
 
     // Insere a fatura na tabela pedsite
-    $sql = "INSERT INTO pedsite (id,NumeroPedido,NomCli, DatEmi, ObsPed)
-            VALUES (null, :NumeroPedido, :NomCli, :DatEmi, :ObsPed)";
+    $sql = "INSERT INTO pedsite (id,NumeroPedido,NomCli, DatEmi, SitPed, ObsPed)
+            VALUES (null, :NumeroPedido, :NomCli, :DatEmi, 1, :ObsPed)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         ':NumeroPedido' => $NumeroPedido,
