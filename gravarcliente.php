@@ -21,8 +21,7 @@ $cmd = "INSERT INTO `e085cli`(`id`, `CodCli`, `NomCli`, `TipCli`, `CgcCpf`, `End
 $rs=mysqli_query($conecta,$cmd);
 
 if($rs){
-	echo  'Cliente incluso!';
-	echo "<button type=\"botton\" class=\"btn btn-default\" onclick=\"window.close()\">Sair</button>";
+	header('Location: gravacao_sucesso_cliente.php');
 }else{
 echo "Erro ao atualizar campos!"; 
 }

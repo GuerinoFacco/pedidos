@@ -25,7 +25,7 @@
         <div class="col-xl-6 col-lg-12">
           <!-- Row start -->
           <div class="row align-items-center justify-content-center">
-            <div class="col-xl-8 col-sm-4 col-12">
+            <div style="margin-top: 12rem;" class="col-xl-8 col-sm-4 col-12">
               <form action="autenticacaousuario.php" class="my-5" method="post">
                 <div class="bg-white p-5 rounded-4">
                   <div class="login-form">
