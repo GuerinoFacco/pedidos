@@ -112,7 +112,7 @@ if (mysqli_connect_errno())
                     ?> 
                 </h3>
                 <p class="m-0 small">
-                  <span class="badge bg-dark me-1">
+                  <span class="badge bg-black me-1">
                     <i class="bi bi-arrow-up-right-square"></i>
                     <?php
                       $cmd12 = "SELECT COUNT(DISTINCT(`CodCli`)) as clicom FROM `e120ped` WHERE 1";

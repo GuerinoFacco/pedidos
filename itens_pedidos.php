@@ -1,11 +1,11 @@
 <?php
 include "config.php";
-$conecta = mysqli_connect($host, $user, $pass, $banco);
-if (mysqli_connect_errno())
-  {
-  echo "Falha ao conectar o MySQL: " . mysqli_connect_error();
-  }
-  $numped = $_GET['numped'];
+  $conecta = mysqli_connect($host, $user, $pass, $banco);
+    if (mysqli_connect_errno())
+      {
+      echo "Falha ao conectar o MySQL: " . mysqli_connect_error();
+      }
+      $numped = $_GET['numped'];
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +51,7 @@ if (mysqli_connect_errno())
                 <ol class="breadcrumb mb-3">
                   <li class="breadcrumb-item">
                     <i class="icon-house_siding lh-1"></i>Inicio
+                    <a href="inicial.php" class="text-decoration-none">Inicio</a>
                   </li>
                   <li class="breadcrumb-item">Pedidos</li>
                   <li class="breadcrumb-item">Ítens de pedidos</li>
@@ -62,7 +63,7 @@ if (mysqli_connect_errno())
 
             <!-- Row start -->
             <div class="row gx-3">
-              <div class="col-12">
+              <div class="col-xl-12">
 
                 <!-- Card start -->
                 <div class="row gx-3">

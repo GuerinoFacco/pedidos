@@ -318,7 +318,7 @@ require 'vendor/autoload.php';
                             echo "</td>";
                             echo "<td>";
                             if ($row['SitPed'] == 1){
-                              echo "<a href='#' onclick='window.open('cancelarpedido.php?numped=".$row['NumeroPedido']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=618')' class='btn btn-primary'><i class='icon-edit'></i></a>";
+                              echo "<a href=\"#\" class='btn btn-primary' onclick=\"window.open('pedido_alterar.php?id=".$row['id']."', 'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=YES, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=100, LEFT=400, WIDTH=1400, HEIGHT=745')\"><i class='icon-edit'></i></a>";
                               echo'    |    ';
                               echo "<a href='#' onclick='enviar(id=".$row['id'].",acao=2)' class='btn btn-info'><i class='icon-mail'></i></a>";
                               echo'    |    ';
