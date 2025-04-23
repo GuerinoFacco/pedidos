@@ -38,7 +38,7 @@ $foto=$_SESSION['foto'];
                 <?php echo '<img src="assets/images/'.$foto.'" class="rounded-2 img-3x" alt="Bootstrap Gallery" />';?>
                 
                 <div class="ms-2 text-truncate d-lg-block d-none text-white">
-                  <span class="d-flex opacity-50 small">Admin</span>
+                  <span class="d-flex opacity-50 small">RPVS</span>
                   <span><?php echo $usu;?></span>
                 </div>
               </a>
