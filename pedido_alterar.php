@@ -12,6 +12,13 @@ include "config.php";
       $NumeroPedido=$row1['NumeroPedido'];
       $datemi=$row1['datemi'];
       $nomcli=$row1['nomcli'];
+
+      $cmd2 = "SELECT * FROM `e085cli` WHERE `CgcCpf` = '$nomcli'";
+      $rs2=mysqli_query($conecta,$cmd2);
+      $row2=mysqli_fetch_array($rs2,MYSQLI_ASSOC);
+      $nomecli=$row2['NomCli'];
+      $cidcli=$row2['CidCli'];
+      $sigufs=$row2['SigUfs'];
 ?>
 
 <!DOCTYPE html>
@@ -90,15 +97,8 @@ include "config.php";
                                   </p>
                               </div>                       
                               <label for="NomCli">Nome do Cliente:</label><br>
-                              <input id="NomCli" name="NomCli" class="form-control" value="<?php
-                                    $cmd2 = "SELECT * FROM `e085cli` WHERE `CgcCpf` = '$nomcli'";
-                                    $rs2=mysqli_query($conecta,$cmd2);
-                                    $row2=mysqli_fetch_array($rs2,MYSQLI_ASSOC);
-                                    $nomecli=$row2['NomCli'];
-                                    $cidcli=$row2['CidCli'];
-                                    $sigufs=$row2['SigUfs'];
-                                    echo $nomecli." - ".$cidcli." - ".$sigufs." - CNPJ/CPF:".$nomcli;
-                                    ?>" readonly ></input>
+                              <input id="NomCli" name="NomCli" class="form-control" placeholder="<?php echo $nomecli." - ".$cidcli." - ".$sigufs." - CNPJ/CPF:".$nomcli;
+                                    ?>" value="<?php echo $nomcli;?>"readonly ></input>
                                 <div class="space2"></div>
                               <h3>Itens do pedido</h3>
                                 <table id="items-table">
@@ -119,9 +119,9 @@ include "config.php";
                                         $rs3=mysqli_query($conecta,$cmd3);
                                         while($row3=mysqli_fetch_array($rs3,MYSQLI_ASSOC)){
                                           echo '<td><input type="number" value="'.$row3['id'].'" name="id" class="idProd" readonly ></td>';
-                                          echo '<td><input style="max-width: 600px; width: 600px" type="text" placeholder="'.$row3['produto'].'" name="produto[]" required></td>';
-                                          echo '<td><input type="number" placeholder="'.$row3['qtdped'].'" name="qtdped[]" id="unit" step="1" min="1" onkeyup="getInput()" required></td>';
-                                          echo '<td><input type="number" placeholder="'.$row3['preuni'].'" name="preuni[]" id="price" step="0.01" min="0.01" onkeyup="getInput()" required></td>';
+                                          echo '<td><input style="max-width: 600px; width: 600px" type="text" placeholder="'.$row3['produto'].'" name="produto[]" ></td>';
+                                          echo '<td><input type="number" placeholder="'.$row3['qtdped'].'" name="qtdped[]" id="unit" step="1" min="1" onkeyup="getInput()" ></td>';
+                                          echo '<td><input type="number" placeholder="'.$row3['preuni'].'" name="preuni[]" id="price" step="0.01" min="0.01" onkeyup="getInput()" ></td>';
                                           echo '<td><input type="number" name="amount" class="amount" id="amount" disabled></td>';
                                           echo '<td style="text-align: right;"><span class="fs-3 icon-trash-2"></span></td></tr>';
                                         }
