@@ -309,7 +309,7 @@ require 'vendor/autoload.php';
                             echo "</td>";
                             echo "<td>";
                               if ($row['SitPed'] == 1){
-                                echo "<span class='badge bg-info'>Digitado</span>";
+                                echo "<span class='badge bg-info'>Orçamendo</span>";
                               } else if ($row['SitPed'] == 2){
                                 echo "<span class='badge bg-success'>Enviado</span>";
                               } else if ($row['SitPed'] == 3){
