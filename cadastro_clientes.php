@@ -37,7 +37,7 @@ if (mysqli_connect_errno())
           <div class="container">
             <div class="offcanvas offcanvas-end" id="MobileMenu">
               <div class="offcanvas-header">
-                <h5 class="offcanvas-title semibold">Navigation</h5>
+                <h5 class="offcanvas-title semibold">Navegação</h5>
                 <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="offcanvas">
                   <i class="icon-clear"></i>
                 </button>
@@ -171,7 +171,7 @@ if (mysqli_connect_errno())
                     <!-- Row start linha 2 -->
                     <div class="row gx-3">
                       <!-- Row start endereço -->
-                      <div class="col-sm-8 col-12">
+                      <div class="col-sm-6 col-6">
                         <div class="card mb-3">
                           <div class="card-body">
                             <div class="was-validated">
@@ -200,11 +200,81 @@ if (mysqli_connect_errno())
                         </div>
                       </div>
                       <!-- Row end cidade -->
+                       <!-- Row start InsEst -->
+                       <div class="col-sm-3 col-3">
+                        <div class="card mb-3">
+                          <div class="card-body">
+                            <div class="was-validated">
+                              <label for="validationCustom05" class="form-label">Insc. Estadual ou do produtor</label>
+                                <input name="InsEst" type="text" class="form-control" id="validationCustom05" required />
+                                <div class="invalid-feedback">
+                                  Entre com o número do docunmento.
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Row end InsEst -->
+
                     </div>
                     <!-- Row end linha 2 -->
 
-
                     <!-- Row start linha 3 -->
+                    <div class="row gx-3">
+                      <!-- Row start Contato -->
+                      <div class="col-sm-5 col-5">
+                        <div class="card mb-3">
+                          <div class="card-body">
+                            <div class="was-validated">
+                              <label for="validationCustom05" class="form-label">Contato</label>
+                                <input name="ContatoCli" type="text" class="form-control" id="validationCustom05" required />
+                                <div class="invalid-feedback">
+                                  Entre com o Contato.
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Row end Contato -->
+                      <!-- Row start Email -->
+                      <div class="col-sm-5 col-5">
+                        <div class="card mb-3">
+                          <div class="card-body">
+                            <div class="was-validated">
+                              <label for="validationCustom05" class="form-label">E-mail</label>
+                                <input name="EmailCli" type="email" class="form-control" id="validationCustom05" required />
+                                <div class="invalid-feedback">
+                                  Entre com o email.
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Row end email -->
+                      <!-- Row start telefone -->
+                      <div class="col-sm-2 col-2">
+                        <div class="card mb-3">
+                          <div class="card-body">
+                          <div class="was-validated">
+                              <label for="validationCustom04" class="form-label">Telefone</label>
+                              <input name="FoneCli" type="text" class="form-control" id="validationCustom05" required />
+                                <div class="invalid-feedback">
+                                  Entre com o Telefone.
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Row end cidade -->
+                      
+                      
+
+
+
+                    </div>
+                    <!-- Row end linha 3 -->
+
+                    <!-- Row start linha 4 -->
                     <div class="row gx-3">
                       <!-- Row start CEP -->
                       <div class="col-sm-3 col-3">
@@ -300,7 +370,9 @@ if (mysqli_connect_errno())
 
 
                     </div>
-                    <!-- Row end linha 3 -->
+                    <!-- Row end linha 4 -->
+
+
                     
                   </form>
                 </div>
