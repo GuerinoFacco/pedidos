@@ -257,7 +257,7 @@ if (mysqli_connect_errno())
                           <div class="card-body">
                           <div class="was-validated">
                               <label for="validationCustom04" class="form-label">Telefone</label>
-                              <input name="FoneCli" type="text" class="form-control" id="validationCustom05" required />
+                              <input name="FoneCli" type="text" class="form-control" onkeypress="$(this).mask('(00) 0000-00009')" id="validationCustom05" required />
                                 <div class="invalid-feedback">
                                   Entre com o Telefone.
                                 </div>
@@ -267,9 +267,6 @@ if (mysqli_connect_errno())
                       </div>
                       <!-- Row end cidade -->
                       
-                      
-
-
 
                     </div>
                     <!-- Row end linha 3 -->
@@ -282,7 +279,7 @@ if (mysqli_connect_errno())
                           <div class="card-body">
                             <div class="was-validated">
                               <label for="validationCustom05" class="form-label">CEP</label>
-                                <input name="CepCli" type="text" class="form-control" id="validationCustom05" required />
+                                <input name="CepCli" type="text" class="form-control" onkeypress="$(this).mask('00.000-000')" id="validationCustom05" required />
                                 <div class="invalid-feedback">
                                   Entre com o CEP.
                                 </div>
@@ -428,6 +425,9 @@ if (mysqli_connect_errno())
 
     <!-- Custom JS files -->
     <script src="assets/js/custom.js"></script>
+
+    <!-- mascaras dos inputs-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
   </body>
 
 </html>

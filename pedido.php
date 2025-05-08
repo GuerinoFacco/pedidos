@@ -166,7 +166,19 @@ include "config.php";
                           <tbody id="table-body">
                             <tr class="single-row">
                             <td><input type="number" value="1" name="id" class="idProd" readonly ></td>
-                                <td><input style="max-width: 600px; width: 600px" type="text" placeholder="Produto" name="produto[]" required></td>
+                                <td>
+                                  <select style="max-width: 600px; width: 600px" type="text" name="produto[]" required class="form-select" id="single-select-field">
+                                    <option selected="" disabled="" value=""></option>
+                                    <?php
+                                    $cmd1 = "SELECT * FROM `e075pro` WHERE 1 ORDER BY 'CodPro'";
+                                    $rs1=mysqli_query($conecta,$cmd1);								
+                                    while($row1=mysqli_fetch_array($rs1,MYSQLI_ASSOC)){
+                                      echo "<option value=".$row1['CodPro']."</option>";
+                                    }
+                                    ?>
+                                  </select>
+                                </td>
+                                <!--<td><input style="max-width: 600px; width: 600px" type="text" name="produto[]" required></td>-->
                                 <td><input type="number" name="qtdped[]" id="unit" step="1" min="1" onkeyup="getInput()" required></td>
                                 <td><input type="number" name="preuni[]" id="price" step="0.01" min="0.01" onkeyup="getInput()" required></td>
                                 <td><input type="number" name="amount" class="amount" id="amount" disabled></td>

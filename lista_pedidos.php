@@ -31,12 +31,12 @@ require 'vendor/autoload.php';
 
     try {
     //Server settings
-    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                // Debug
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;              // Debug
     $mail->isSMTP();                                      // Configura o disparo como SMTP
-    $mail->Host = 'smtp.gmail.com';                        // Especifica o enderço do servidor SMTP da Locaweb
+    $mail->Host = 'smtp.gmail.com';                       // Especifica o enderço do servidor SMTP da Locaweb
     $mail->SMTPAuth = true;                               // Habilita a autenticação SMTP
-    $mail->Username = 'guefacco@gmail.com';            // Usuário do SMTP
-    $mail->Password = 'xnsa jtqe rein gyjk';                       // Senha do SMTP
+    $mail->Username = 'guefacco@gmail.com';               // Usuário do SMTP
+    $mail->Password = 'xnsa jtqe rein gyjk';              // Senha do SMTP
     $mail->SMTPSecure = 'tls';                            // Habilita criptografia TLS | 'ssl' também é possível
     $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS` 
 
